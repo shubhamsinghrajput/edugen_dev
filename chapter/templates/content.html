@@ -1,0 +1,60 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content pdt content-page">
+        <div class="breadcrumb-wrap">
+            <ul class="breadcrumb container">
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'content' %}">Content</a></li>
+            </ul>
+        </div>
+        <form id="myform">
+            {% csrf_token %}
+        </form>
+        <div class="container pt-4">
+            <div class="row">
+                <div class="col-10 col-sm-8 col-lg-4 mx-auto mb-2">
+                    <h1>Content</h1>
+                    <hr class="hr-style hr-style2">
+                </div>
+            </div>
+            <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+                {% for key,value in class_with_unit_dict %}
+                    <div class="chapter-list row">
+                        <div class="col-12 hr-style2 unit-card ">
+                            <h4>{{ key }}</h4>
+                        </div>
+                        {% for key, value in value.items %}
+                            <div class="col-1 col-md-2 tx-c chap-count">{{ key }}</div>
+                            <div class="col-11 col-md-10 hr-style">
+                                <a class="class_id" alt="{{ key.id }}">{{ value }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $('.class_id').click(function () {
+            var chapter_id = $(this).attr('alt');
+            var form = $("#myform");
+            $.ajax({
+                url: '/add_chapter_in_session/',
+                type: 'POST',
+                data: form.serialize() + "&chapter_no=" + chapter_id,
+                success: function (data, textStatus, jQxhr) {
+                    location.href = '/lesson/'
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+        });
+
+    </script>
+{% endblock %}

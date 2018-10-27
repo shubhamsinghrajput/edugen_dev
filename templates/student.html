@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <hr class="m-0">
+    <section class="p-3 p-lg-5 tab-pane" id="student">
+        <div class="my-auto">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">Student Form</h2>
+                <hr class="star-dark mb-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <form name="student-form" id="student-form">
+                            <div class="mb-0 pb-2">
+                                <label>Name</label>
+                                <input class="form-control" name="student-name" id="student-name" type="text"
+                                       placeholder="Name" required="required"
+                                       data-validation-required-message="Please enter your name.">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Student ID</label>
+                                <input class="form-control" name="student-id" id="student-id" type="text"
+                                       placeholder="Student ID" required="required"
+                                       data-validation-required-message="Please enter your name.">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Phone No.</label>
+                                <input class="form-control" id="student-phone" type="tel" placeholder="Phone Number"
+                                       required="required"
+                                       data-validation-required-message="Please enter your phone number.">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Email</label>
+                                <input class="form-control" id="student-email" type="email" placeholder="Email"
+                                       required="required"
+                                       data-validation-required-message="Please enter your email address.">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Class</label>
+                                <input class="form-control" name="student-class" id="student-class" type="text"
+                                       placeholder="Section" required="required">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Section</label>
+                                <input class="form-control" name="student-section" id="student-section" type="text"
+                                       placeholder="Section" required="required"
+                                       data-validation-required-message="Please enter your name.">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Roll No.</label>
+                                <input class="form-control" name="student-roll" id="student-roll" type="text"
+                                       placeholder="Roll no." required="required"
+                                       data-validation-required-message="Please enter your name.">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Subject</label>
+                                <select class="multiselect" name="stu_subject" multiple="multiple" id="stu_subject">
+                                    <option value="math">Math</option>
+                                    <option value="science">Science</option>
+                                    <option value="english">English</option>
+                                    <option value="hindi">Hindi</option>
+                                    <option value="sanskrit">Sanskrit</option>
+                                </select>
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Address</label>
+                                <textarea class="form-control" id="stu_address" rows="5" placeholder="Address"
+                                          required="required"></textarea>
+                            </div>
+                            <br>
+                            <div id="success"></div>
+                            <button type="submit" class="btn btn-xl" id="student-form-submit">Send</button>
+                        </form>
+                        <div class="mb-0 pb-2"><br>
+                            <p>Before you can login, you must active your account with the link sent to your email
+                                address.
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 mx-auto"><br>
+                        <form name="otp-student-form" id="otp-student-form">
+                            <div class="mb-0 pb-2">
+                                <label>OTP</label>
+                                <input class="form-control" id="otp-student" type="text"
+                                       placeholder="Please enter OTP" required="required">
+                                <div id="success"></div>
+                                <br>
+                                <button type="submit" class="btn btn-xl" id="student-otp-submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

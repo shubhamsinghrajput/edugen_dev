@@ -1,0 +1,128 @@
+/*===================992px====================*/
+@media all and (max-width:1023px){
+	.tab-head ul .nav-link{
+		padding: 5px 10px;
+	}
+	ul.breadcrumb li a{
+		font-size: inherit;
+	}
+}
+/*===================768px====================*/
+@media all and (max-width:991px){
+	.card [class*="card-header-"] {
+		margin: 0px 5px 0;
+	 }
+	.wrapper-card{
+		.card-title{
+			font-size: 40px;
+		}
+		.card [class*="card-header-"] .card-icon, .card [class*="card-header-"] .card-text{
+			padding: 10px; 	
+		}
+	}
+	#question-bank{
+		.nav-link.btn{
+			padding: 7px 25px;
+			min-width: 225px;
+			&+.nav-link.btn{
+				margin-left: 0;
+ 			}
+		}
+	}
+}
+
+
+@media all and (max-width:767px){
+	/*==========GLOBAL STYLE=========*/
+	body{
+		font-size: 13px;
+	}
+	.container{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.content {
+		padding-bottom: 35px;
+	}
+	h1{
+		font-size: 1.5rem;
+	}
+	h2{
+		font-size: 1.2rem;
+	}
+	h3{
+		font-size: 1rem;
+	}
+	h4{
+		font-size: .95rem;
+	}
+	.pdt{
+		padding-top: 66px;
+	}
+	/*===========================*/
+	.logo{
+		width: 50px;
+		height: 50px;
+	}
+	#collapsibleNavbar {
+		position: fixed;
+		bottom: 0;
+		width: 85%;
+		padding: 30px 0;
+		height: 100%;
+		left: -85%;
+		background: $bg-l-black;
+		overflow: hidden;
+		text-align: center; 
+		z-index: 5;
+		  @include transition(0.4s);
+		  & li a {
+			padding: 10px 15px;
+			font-size: 20px;
+			display: block;
+		}
+	}
+	.show#collapsibleNavbar{
+		left: 0;
+	} 
+	.content-page .chapter-list a{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.content-page .chapter-list > [class^="col-"] {
+		padding-top: 7px;
+		padding-bottom: 7px;
+	}
+	.footer{
+		font-size: 13px;
+		line-height: 1.5;
+		h6{
+			font-size: 13px;
+			line-height: 1.4;
+		}
+	}
+	.tab-head ul{
+		padding-top: 30px;
+			.nav-link{
+			padding: 3px 7px;
+		}
+	}
+	.tab-content{
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+		font-size: 13px;
+	}
+	#accordion-style-1 .card-body{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.dataTable{
+		font-size: 13px;
+	}
+	#brainstrom,#tell-teacher,#find-out{
+		ul,ol{
+			list-style:disc;
+			padding-left: 10px;
+		}
+	}
+}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <hr class="m-0">
+    <section class="p-3 p-lg-5" id="teacher">
+        <div class="my-auto">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">Teacher Form</h2>
+                <hr class="star-dark mb-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <p class="text-success"> {{ teacher_mess }}</p>
+                        <p class="text-danger">{{ teacher_cid_mess }} </p>
+
+                        <form name="teacher-form" id="teacher-form" method="post" action="{% url 'teacher_update' %}">
+                            {% csrf_token %}
+                            <div class="mb-0 pb-2">
+                                <label>CID</label>
+                                <input class="form-control" name="cid" id="teacher-cid" value="{{ cid }}" type="text"
+                                       placeholder="Please enter school CID" required="required">
+                            </div>
+
+                            {% for field in form %}
+                                <div class="mb-0 pb-2">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+
+                            <br>
+                            <div id="success"></div>
+                            <button type="submit" class="btn btn-xl" id="teacher-form-submit">Send</button>
+                        </form>
+                        <div class="mb-0 pb-2"><br>
+                            <p>Before you can login, you must active your account with the link sent to your email
+                                address.
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-2 mx-auto"><br>
+                         <p class="text-success">
+                            {{ otp_message }}
+                        </p>
+                        <p class="text-danger">
+                            {{ otp_message_error }}
+                        </p>
+                        <form action="{% url 'teacher_verify_otp' %}" method="post" autocomplete="off"
+                              name="otp-school-teacher-form" id="otp-school-teacher-form">
+                            {% csrf_token %}
+                            <div class="mb-0 pb-2">
+                                <label>OTP From school #</label>
+                                <input class="form-control" name="school_otp" id="otp-school-teacher" type="text"
+                                       placeholder="Please enter OTP" required="required">
+                                <div id="success"></div>
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Teacher OTP</label>
+                                <input class="form-control" name="teacher_otp" id="otp-teacher" type="text"
+                                       placeholder="Please enter OTP" required="required">
+                                <div id="success"></div>
+                                <br>
+                                <button type="submit" class="btn btn-xl" id="otp-teacher-submit">Send</button>
+                            </div>
+
+
+                        </form>
+{#                        <p>#The Service will be stopped within 72 hours, Please submit OTP Provided to the#}
+{#                            school.</p>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

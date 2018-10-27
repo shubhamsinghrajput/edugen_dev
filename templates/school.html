@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <section class="p-3 p-lg-5 tab-pane active" id="school">
+        <div class="my-auto">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">School Form</h2>
+                <hr class="star-dark mb-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        {% if school_mess %}
+                            <p class="text-success">
+                                {{ school_mess }}
+                            </p>
+                        {% elif school_mess_error %}
+                            <p class="text-danger">
+                                {{ school_mess_error }}
+                            </p>
+                        {% elif not cid %}
+                            <p class="text-danger">
+                                CID is empty. Please check your CID or CID is missing in your url.
+                            </p>
+                        {% endif %}
+                        <form name="school-form" autocomplete="off" id="school-form" method="post"
+                              action="{% url 'update' %}"
+                        >
+                            {% csrf_token %}
+                            <div class="mb-0 pb-2">
+                                <label>CID</label>
+                                <input class="form-control" name="cid" id="cid" type="text" placeholder="CID"
+                                       disabled="disabled" value="{{ object.cid }}" required>
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>User</label>
+                                <select name="user_type" id="user" required="required">
+                                    <option value="">Please choose a user</option>
+                                    <option value="school" {% if object.user_type == 'school' %}
+                                            selected
+                                    {% endif %}>School
+                                    </option>
+                                    <option value="authorised_person"
+                                            {% if object.user_type == 'authorised_person' %}
+                                            selected
+                                            {% endif %}>Authorised Person
+                                    </option>
+                                    <option value="owner_chairman" {% if object.user_type == 'owner_chairman' %}
+                                            selected
+                                    {% endif %}>Owner/Chairman
+                                    </option>
+                                    <option value="principal" {% if object.user_type == 'principal' %}
+                                            selected
+                                    {% endif %}>Principal
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>School Name</label>
+                                <input class="form-control" id="user-name" type="text" name="school_name"
+                                       value="{{ object.school_name }}" placeholder="User name" required>
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Phone No.</label>
+                                <input class="form-control" id="user-phone" type="text" maxlength="10"
+                                       name="school_mobile_no"
+                                       value="{{ object.school_mobile_no }}" placeholder="Phone No."
+                                       required>
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Email Address</label>
+                                <input class="form-control" id="school-email" value="{{ object.school_email }}"
+                                       name="school_email"
+                                       type="email" placeholder="Email Address" required>
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Address</label>
+                                <textarea class="form-control" id="school-address" rows="5" placeholder="Address"
+                                          required name="school_address"
+                                          data-validation-required-message="Please enter address.">{{ object.school_address }}</textarea>
+                            </div>
+                            <br>
+                            <div id="success"></div>
+                            {% if cid %}
+                                <button type="submit" class="btn btn-xl" id="school-form-submit">Send</button>
+                            {% endif %}
+
+                        </form>
+                        <div class="mb-0 pb-2"><br>
+                            <p>Before you can login, you must active your account with the link sent to your email
+                                address.
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-4 "><br>
+                        <p class="text-success">
+                            {{ otp_message }}
+                        </p>
+                        <p class="text-danger">
+                            {{ otp_message_error }}
+                        </p>
+                        <form name="otp-school-form" id="otp-school-form" method="post" autocomplete="off"
+                              action="{% url 'verify_otp' %}">
+                            {% csrf_token %}
+                            <div class="mb-0 pb-2">
+                                <label>OTP</label>
+                                <input class="form-control" id="otp-school" type="text"
+                                       placeholder="Please enter OTP" name="otp" required>
+                                <div id="success"></div>
+                                <br>
+                                {% if cid %}
+                                    <button type="submit" class="btn btn-xl" id="school-otp-submit">Send</button>
+                                {% endif %}
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

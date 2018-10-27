@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <hr class="m-0">
+    <section class="p-3 p-lg-5 tab-pane" id="parent">
+        <div class="my-auto">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">Parent Form</h2>
+                <hr class="star-dark mb-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <form name="parent-form" id="parent-form">
+                            <div class="mb-0 pb-2">
+                                <label>Student ID</label>
+                                <input class="form-control" id="parent-student-id" type="text"
+                                       placeholder="Student ID" required="required">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Parent Name</label>
+                                <input class="form-control" id="parent-name" type="text" placeholder="Parent Name"
+                                       required="required">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Email Address</label>
+                                <input class="form-control" id="parent-email" type="email"
+                                       placeholder="Email Address" required="required">
+                            </div>
+                            <div class="mb-0 pb-2">
+                                <label>Phone Number</label>
+                                <input class="form-control" id="parent-phone" type="tel" placeholder="Phone Number"
+                                       required="required">
+                            </div>
+                            <br>
+                            <div id="success"></div>
+                            <div class="">
+                                <button type="submit" class="btn btn-xl" id="parent-form-submit">Send</button>
+                            </div>
+                        </form>
+                        <div class="mb-0 pb-2"><br>
+                            <p>Before you can login, you must active your account with the link sent to your email
+                                address.
+
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mx-auto"><br>
+                        <form name="otp-parent-form" id="otp-parent-form" >
+                            <div class="mb-0 pb-2">
+                                <label>OTP</label>
+                                <input class="form-control" id="otp-parent" type="text"
+                                       placeholder="Please enter OTP" required="required">
+                                <div id="success"></div>
+                                <br>
+                                <button type="submit" class="btn btn-xl" id="parent-otp-submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

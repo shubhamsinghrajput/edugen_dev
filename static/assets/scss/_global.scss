@@ -1,0 +1,278 @@
+// Global styling for this template
+
+body.side-panel {
+	padding-left: $sidebar-base-width;
+	@include body-font;
+	padding-top: 54px;
+	color: $gray-600;
+
+	@media (min-width: 992px) {
+
+		padding-top: 0;
+		padding-left: $sidebar-base-width;
+
+	}
+
+	@media (max-width: 991px) {
+		padding-left: 0;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@include heading-font;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: $gray-800;
+	}
+
+	h1 {
+		font-size: 6rem;
+		line-height: 5.5rem;
+	}
+
+	h2 {
+		font-size: 3.5rem;
+	}
+
+	h3 {
+		font-size: 2rem;
+	}
+
+	p.lead {
+		font-size: 1.15rem;
+		font-weight: 400;
+	}
+
+	.subheading {
+		text-transform: uppercase;
+		font-weight: 500;
+		@include heading-font;
+		font-size: 1.5rem;
+	}
+
+	.social-icons {
+		a {
+			display: inline-block;
+			height: 3.5rem;
+			width: 3.5rem;
+			background-color: $gray-700;
+			color: $white !important;
+			border-radius: 100%;
+			text-align: center;
+			font-size: 1.5rem;
+			line-height: 3.5rem;
+			margin-right: 1rem;
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&:hover {
+				background-color: $primary;
+			}
+		}
+	}
+
+	.dev-icons {
+		font-size: 3rem;
+
+		.list-inline-item i {
+			&:hover {
+				color: $primary;
+			}
+		}
+	}
+}
+
+/*-----------------------------------*/
+h1{
+	font-size: 2.5rem;
+}
+h2{
+	font-size: 2rem;
+}
+h3{
+	font-size: 1.5rem;
+}
+h4{
+	font-size: 1.2rem;
+}
+body,html{
+	color: #333;
+	overflow-x: hidden;
+ }
+ 
+/*--------------footer-----------*/
+.footer {
+	padding: 20px 0 15PX;
+	border-top: 1px solid $bg-l-black;
+	text-align: center;
+
+	h6 {
+		display: inline-block;
+		line-height: 1;
+		vertical-align: middle;
+		margin: 0;
+		font-weight: 400;
+	}
+
+	.footer-nav {
+		display: inline-block;
+		margin-bottom: 0;
+		line-height: 1;
+		vertical-align: middle;
+		margin-right: 15px;
+		padding-right: 15px;
+		border-right: 1px solid #ccc;
+	}
+
+	.footer-nav li {
+		float: left;
+		padding: 0px 5px;
+	}
+
+	.footer-nav li a {
+		color: #fff;
+	}
+
+
+}
+
+/*-----------------------------------*/
+ul,
+ol {
+	list-style-type: none;
+}
+
+[type="submit"] {
+	background: $bg-orange;
+	color: #fff;
+	width: 100%;
+}
+
+::-webkit-input-placeholder {
+	color: rgba(0, 0, 0, 0.25) !important;
+}
+
+button.dt-button:active:not(.disabled):hover:not(.disabled),
+button.dt-button.active:not(.disabled):hover:not(.disabled),
+div.dt-button:active:not(.disabled):hover:not(.disabled),
+div.dt-button.active:not(.disabled):hover:not(.disabled),
+a.dt-button:active:not(.disabled):hover:not(.disabled),
+a.dt-button.active:not(.disabled):hover:not(.disabled) {
+	background: $bg-orange;
+	border-color: $bg-orange;
+	color: $white;
+}
+
+button.dt-button:focus:not(.disabled),
+div.dt-button:focus:not(.disabled),
+a.dt-button:focus:not(.disabled) {
+	background: $bg-d-orange;
+	color: $white;
+	border-color: $bg-d-orange;
+}
+
+.pdt {
+	padding-top: 91px;
+}
+
+//-----------Breadcrumbs-----
+
+.breadcrumb-wrap {
+	background: #3c2727;
+	color: #fff;
+	padding: 8px 16px;
+
+	p {
+		margin-bottom: 0;
+		line-height: 1.4;
+	}
+}
+
+//-----Breadcrumb
+ul.breadcrumb {
+	padding: 0 15px;
+	margin-bottom: 0;
+	list-style: none;
+	background: transparent;
+}
+
+ 
+ul.breadcrumb li a {
+	display: inline;
+	color: $c-orange;
+	color: #fff;
+	font-size: 15px;
+ }
+
+ul.breadcrumb li + li:before {
+	padding: 8px;
+	color: #fff;
+	content: "/\00a0";
+}
+
+input[disabled] {
+	cursor: not-allowed;
+}
+
+//---------------- Scroll Stylr -----------
+@media all and (min-width:768px){
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		border-radius: 10px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+	}
+}
+
+//--------------------table line------------
+.hr-style {
+	position: relative;
+	 &:before {
+		content: '';
+ 		width: 100%;
+		left: 0;
+		top: 0;
+ 		border: 0;
+		position: absolute;
+		height: 1px;
+		background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+		background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+		background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+		background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	}
+    &.hr-style2:before {
+		height: 2px;
+  	}
+}
+
+.tx-c {
+	text-align: center;
+}
+.hidden-xs{
+	@media all and (max-width:767px){
+		display: none;
+	}
+}
+.a_submit{
+	padding: 0;
+	a{
+		padding: .375rem .75rem;
+	}
+}
+/*-----------------Table responsive--------------*/
+.dataTables_wrapper{
+	min-width: 800px;
+}

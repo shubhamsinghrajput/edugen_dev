@@ -1,0 +1,120 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content pdt book-content content-page">
+        <div class="breadcrumb-wrap">
+            <ul class="breadcrumb container">
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'content' %}">Content</a></li>
+                <li><a href="{% url 'lesson' %}">{{ lesson_plan_data.chapter_no }}</a></li>
+                <li><a href="{% url 'lesson' %}">Lesson Plan</a></li>
+            </ul>
+        </div>
+        <div class="container pt-4">
+            <div class="chap-header">
+                <h3 class="unit"> <span class="bg-set">{{ unit_with_chapter.unit_name }}</span></h3>
+                <h1>{{ lesson_plan_data.chapter_no }} : {{ unit_with_chapter.chapter_name }}</h1>
+            </div>
+            <div class="tab-head">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'lesson' %}">Lesson plan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'question_bank' %}">Question bank</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'word_search' %}">Word search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'brain_storm' %}">Brainstorm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'tell_your_teacher' %}">Tell your teacher</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'find_out' %}">Find out</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content p-4">
+                <section class=" bg-gray" id="accordion-style-1">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                        <i class="fa fa-angle-double-right mr-3"></i>Goal
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ lesson_plan_data.goal|linebreaks }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        <i class="fa fa-angle-double-right mr-3"></i>Objectives
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse fade" aria-labelledby="headingTwo"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ lesson_plan_data.objective|linebreaks }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        <i class="fa fa-angle-double-right mr-3"></i>Teaching
+                                        Aids
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse fade" aria-labelledby="headingThree"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ lesson_plan_data.teaching_aids|linebreaks }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                            aria-controls="collapseFour">
+                                        <i class="fa fa-angle-double-right mr-3"></i>Teaching
+                                        Suggestions
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse fade" aria-labelledby="headingFour"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ lesson_plan_data.teaching_seggestions|linebreaks }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

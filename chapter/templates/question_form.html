@@ -1,0 +1,111 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content pdt book-content content-page">
+        <div class="breadcrumb-wrap">
+            <ul class="breadcrumb container">
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'content' %}">Content</a></li>
+                <li><a href="{% url 'lesson' %}">{{ unit_with_chapter.chapter_no }}</a></li>
+                <li><a href="{% url 'question_bank' %}">Question Bank</a></li>
+            </ul>
+        </div>
+        <div class="container pt-4">
+            <div class="chap-header">
+                <h3 class="unit"><span class="bg-set">{{ unit_with_chapter.unit_name }}</span></h3>
+                <h1>{{ unit_with_chapter.chapter_no }} : {{ unit_with_chapter.chapter_name }}</h1>
+            </div>
+            <form id="myform">
+                {% csrf_token %}
+            </form>
+            <div class="tab-head">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'lesson' %}">Lesson plan</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link " href="{% url 'question_bank' %}">Question bank</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'word_search' %}">Word search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'brain_storm' %}">Brainstorm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'tell_your_teacher' %}">Tell your teacher</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'find_out' %}">Find out</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content p-4">
+                <section class=" bg-gray" id="question-bank">
+
+                    <div class="wrapper-card pt-5 pb-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-3 col-sm-4 my-auto">
+                                    <div class="card card-stats">
+                                        <div class="card-header card-header-success card-header-icon">
+                                            <div class="card-icon">
+                                                Category
+                                            </div>
+                                            <h3>Intext</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8 my-auto">
+                                    <a class="nav-link btn class_id" alt="0_0">Oral Questions</a>
+                                    <a class="nav-link btn class_id" alt="0_1">Name of the following </a>
+                                </div>
+                            </div>                       </div>
+                    </div>
+                    <div class="wrapper-card pt-5 pb-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-3 col-sm-4 my-auto">
+                                    <div class="card card-stats">
+                                        <div class="card-header card-header-danger card-header-icon">
+                                            <div class="card-icon">
+                                                Category
+                                            </div>
+                                            <h3>Textbook Exercise</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8  my-auto">
+                                    <a class="nav-link btn class_id" alt="1_0">Oral Questions</a>
+                                    <a class="nav-link btn class_id" alt="1_1">Name of the following </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $('.class_id').click(function () {
+            var id = $(this).attr('alt');
+            var form = $("#myform");
+            $.ajax({
+                url: '/add_question_type_in_session/',
+                type: 'POST',
+                data: form.serialize() + "&id=" + id,
+                success: function (data, textStatus, jQxhr) {
+                    location.href = '/question/'
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+        });
+
+    </script>
+{% endblock %}

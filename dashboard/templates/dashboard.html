@@ -1,0 +1,75 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content pdt dashboard-bg">
+        <div class="breadcrumb-wrap">
+            <ul class="breadcrumb container">
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            </ul>
+        </div>
+        <form id="myform">
+            {% csrf_token %}
+        </form>
+
+        <div class="summary-page" id="dashboard">
+            {% for class, subjects in class_subject_records.items %}
+                <div class="wrapper-card pt-5 pb-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-2 my-auto">
+                                <div class="card card-stats">
+                                    <div class="card-header {% cycle 'card-header-warning' 'card-header-success' 'card-header-info' 'card-header-danger' 'card-header-warning' 'card-header-success' 'card-header-info' 'card-header-danger' %}  card-header-icon">
+                                        <div class="card-icon">
+                                            Class
+                                        </div>
+                                        <h2 class="card-title">{{ class }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            {% for subject in subjects %}
+
+                                <div class="col-10 mx-auto">
+                                    <div class="row ">
+                                        <div class="col-md-3 col-sm-6 card-margin">
+                                            <a class="class_id" alt="{{ class.id }}" alt1="{{ subject }}">
+                                                <img class="img-fluid" src="{% static "assets/img/profile.jpg" %}"
+                                                     alt="logo">
+                                                {#                                            {{ subject }}#}
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block javascript %}
+    <script>
+        $('.class_id').click(function () {
+            var class_id = $(this).attr('alt');
+            var subject_id = $(this).attr('alt1');
+            var form = $("#myform");
+            $.ajax({
+                url: '/add_class_in_session/',
+                type: 'POST',
+                data: form.serialize() + "&class_id=" + class_id + "&subject_id=" + subject_id,
+                success: function (data, textStatus, jQxhr) {
+                    location.href = '/content/'
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+        });
+
+    </script>
+{% endblock %}

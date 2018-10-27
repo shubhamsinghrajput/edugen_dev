@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Edugen - Teacher-Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static  "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+    <link href="{% static "assets/css/style.css" %}" rel="stylesheet">
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+<!-- HEADER START -->
+<header class="header bg-orange fixed-top">
+    <nav class="navbar navbar-expand-md container">
+        <a class="navbar-brand logo" href="#">
+            <img src="{% static "assets/img/profile.jpg" %}" alt="logo">
+        </a>
+        <button class="menu-btn"><i class="fa fa-bars"></i>
+        </button>
+        <div class="navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto h-effcts">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+{% block content %}
+{% endblock %}
+<footer class="footer bg-orange">
+    <div class="container">
+        <ul class="footer-nav clearfix">
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+        </ul>
+        <h6>Copyright © 2017 Linchpin Datatech Pvt Ltd - All Rights Reserved.</h6>
+    </div>
+</footer>
+<!-- FOOTER END -->
+<!-- Custom scripts for this template -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+<script src="{% static "assets/js/site.js" %}"></script>
+
+{% block javascript %}
+{% endblock %}
+<script>
+</script>
+</body>
+</html>
