@@ -1,0 +1,1 @@
+web: gunicron edugen.wsgi --log-file -
